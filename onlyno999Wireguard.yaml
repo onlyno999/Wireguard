@@ -70,9 +70,6 @@ proxy-groups:
       - ☁️ CFWarp-G
   - name: ⚖️ 负载均衡
     type: load-balance
-    url: http://www.google.com/generate_204
-    interval: 4000
-    strategy: round-robin
     proxies:
       - ☁️ CFWarp-A
       - ☁️ CFWarp-B
@@ -80,6 +77,8 @@ proxy-groups:
       - ☁️ CFWarp-D
       - ☁️ CFWarp-E
       - ☁️ CFWarp-G
+    url: http://www.gstatic.com/generate_204
+    interval: 3000
 rules:
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
