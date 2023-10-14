@@ -98,7 +98,7 @@ proxy-groups:
   - name: ⚖️ 负载均衡
     type: load-balance
     url: http://www.google.com/generate_204
-    interval: 100
+    interval: 3800
     strategy: consistent-hashing
     proxies:
 
