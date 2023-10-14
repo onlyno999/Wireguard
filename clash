@@ -32,7 +32,9 @@ proxies:
 
   - {name: "☁️ CFWarp-C",type: wireguard,server: 162.159.192.47,port: 3476,ip: 172.16.0.2,private-key: KIV5EsjDNA3mF11Sfedfvy9Xk8man/9MXYdJQxwffEo=,public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=,remote-dns-resolve: false,udp: true}
 
-  - {name: "☁️ CFWarp-D",type: wireguard,server: 162.159.192.217,port: 3476,ip: 172.16.0.2,private-key: SHVqHEGI7k2+OQ/oWMmWY2EQObbRQjRBdDPimh0h1WY=,public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=,remote-dns-resolve: false,udp: true} 
+  - {name: "☁️ CFWarp-D",type: wireguard,server: 162.159.192.217,port: 3476,ip: 172.16.0.2,private-key: SHVqHEGI7k2+OQ/oWMmWY2EQObbRQjRBdDPimh0h1WY=,public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=,remote-dns-resolve: false,udp: true}
+  - {name: "☁️ CFWarp-E",type: wireguard,server: 162.159.195.0,port: 2408,ip: 172.16.0.2,private-key: SHVqHEGI7k2+OQ/oWMmWY2EQObbRQjRBdDPimh0h1WY=,public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=,remote-dns-resolve: false,udp: true}
+  - {name: "☁️ CFWarp-G",type: wireguard,server: 162.159.195.215,port: 4500,ip: 172.16.0.2,private-key: SHVqHEGI7k2+OQ/oWMmWY2EQObbRQjRBdDPimh0h1WY=,public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=,remote-dns-resolve: false,udp: true} 
 
 proxy-groups:
 
@@ -54,6 +56,8 @@ proxy-groups:
       - ☁️ CFWarp-C
 
       - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-G
 
   - name: ♻️ 自动选择
 
@@ -74,6 +78,8 @@ proxy-groups:
       - ☁️ CFWarp-C
 
       - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-G
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
@@ -87,11 +93,13 @@ proxy-groups:
       - ☁️ CFWarp-C
 
       - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-G
   - name: ⚖️ 负载均衡
     type: load-balance
     url: http://www.google.com/generate_204
     interval: 300
-    strategy: consistent-hashing
+    strategy: round-robin
     proxies:
 
       - ☁️ CFWarp-A
@@ -101,6 +109,8 @@ proxy-groups:
       - ☁️ CFWarp-C
 
       - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-G
 rules:
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
