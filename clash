@@ -98,8 +98,8 @@ proxy-groups:
   - name: ⚖️ 负载均衡
     type: load-balance
     url: http://www.google.com/generate_204
-    interval: 300
-    strategy: round-robin
+    interval: 100
+    strategy: consistent-hashing
     proxies:
 
       - ☁️ CFWarp-A
