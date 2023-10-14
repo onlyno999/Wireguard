@@ -25,6 +25,20 @@ dns:
     ipcidr:
     - 240.0.0.0/4
 proxies:
+ - name: 🇨🇳 亚洲线路
+   type: vless
+   server: icook.tw
+   port: 443
+   uuid: e7fb1f69-f3ed-4916-9597-1a87252a72eb
+   udp: true
+   tls: true
+   network: ws
+   servername: gospeedip.onlyno999.top # priority over wss host
+   # skip-cert-verify: true
+   ws-opts:
+    path: "/?ed=2048"
+     headers:
+       Host: gospeedip.onlyno999.top
  - name: warp
    type: wireguard         
    server: 162.159.193.8                                    
@@ -34,11 +48,24 @@ proxies:
    public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
    private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
    udp: true
+   reserved: [0,0,0]
+   remote-dns-resolve: true  
+   dns: [ 1.1.1.1, 8.8.8.8 ]
+   dialer-proxy: "前置节点"
 proxy-groups:
   - name: 🚀 节点选择
     type: select
     proxies:
       - warp
+      - 🇨🇳 亚洲线路
+ - name: 前置节点
+    type: select
+    proxies:  
+      - 手动选择
+ - name: 手动选择
+   type: select
+    use:
+      - 🇨🇳 亚洲线路    
 rules:
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
