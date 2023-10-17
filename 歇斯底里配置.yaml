@@ -1,0 +1,163 @@
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+dns:
+  enable: true
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 223.5.5.5
+  - 8.8.8.8
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fallback:
+  - https://1.0.0.1/dns-query
+  - tls://dns.google
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+    - 240.0.0.0/4
+proxies:
+- name: meta_vless_81
+  type: vless
+  server: 45.150.165.79
+  port: 25678
+  udp: true
+  uuid: 34f36b97-1fb7-41f3-8db4-912cc69e724a
+  tls: true
+  servername: itunes.apple.com
+  flow: xtls-rprx-vision
+  network: tcp
+  reality-opts:
+    public-key: sJsSZcA2DyAHDTcoe8Utbz9JaXJPMVmtHmiXxWmcExc
+  client-fingerprint: chrome
+- name: meta_hysteria_71
+  type: hysteria
+  server: www.dtku50.xyz
+  port: 43250
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  protocol: udp
+  auth_str: 2S9M5Gs0pgRsaTObNghoLZx6wPkBJOGTFWvf4R06Us5hUNtfr7
+  up: 2
+  down: 10
+- name: meta_hysteria_91
+  type: hysteria
+  server: www3.dtku49.xyz
+  port: 58693
+  sni: bing.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  protocol: udp
+  auth_str: nbdyVMqucpFMmyRiwcRQFI7EeKzJWjPYuks3ZzEhCv6HjeZvbh
+  up: 11
+  down: 55
+- name: hysteria_1
+  type: hysteria
+  server: 173.234.25.52
+  port: 20164
+  ports: 20164
+  auth_str: Ljg6NNEATDqP97hdAdHe1lJv7ggtKc0h7zmCCZKCX3qY0LR64F
+  up: 80
+  down: 100
+  fast-open: true
+  protocol: udp
+  sni: www.microsoft.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+- name: hysteria_2
+  type: hysteria
+  server: 173.234.25.52
+  port: 20164
+  ports: 20164
+  auth_str: Ljg6NNEATDqP97hdAdHe1lJv7ggtKc0h7zmCCZKCX3qY0LR64F
+  up: 80
+  down: 100
+  fast-open: true
+  protocol: udp
+  sni: www.microsoft.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+- name: hysteria_3
+  type: hysteria
+  server: 51.158.54.46
+  port: 11926
+  ports: 11926
+  auth_str: Trz2alKwzCImRAXI3nXfpo1ylpHfqOL8s1vageWKoyjjvWeMVs
+  up: 80
+  down: 100
+  fast-open: true
+  protocol: udp
+  sni: youku.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - ⚖️ 负载均衡
+      - 🤏 自助选择
+      - 🔯 故障转移
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - meta_vless_81
+      - meta_hysteria_71
+      - meta_hysteria_91
+      - hysteria_1
+      - hysteria_2
+      - hysteria_3
+  - name: 🤏 自助选择
+    type: select
+    proxies:
+      - meta_vless_81
+      - meta_hysteria_71
+      - meta_hysteria_91
+      - hysteria_1
+      - hysteria_2
+      - hysteria_3
+  - name: 🔯 故障转移
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    proxies:
+      - meta_vless_81
+      - meta_hysteria_71
+      - meta_hysteria_91
+      - hysteria_1
+      - hysteria_2
+      - hysteria_3
+  - name: ⚖️ 负载均衡
+    type: load-balance
+    proxies:
+      - meta_vless_81
+      - meta_hysteria_71
+      - meta_hysteria_91
+      - hysteria_1
+      - hysteria_2
+      - hysteria_3
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+rules:
+- DOMAIN,clash.razord.top,DIRECT
+- DOMAIN,yacd.haishan.me,DIRECT
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,🚀 节点选择
