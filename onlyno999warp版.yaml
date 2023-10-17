@@ -1,0 +1,162 @@
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+dns:
+  enable: true
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 223.5.5.5
+  - 8.8.8.8
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fallback:
+  - https://1.0.0.1/dns-query
+  - tls://dns.google
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+    - 240.0.0.0/4
+proxies:
+ - name: ☁️ CFWarp-A
+   type: wireguard         
+   server: 162.159.193.8                                    
+   port: 2408                                              
+   ip: 172.16.0.2
+   ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
+   public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+   private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
+   udp: true
+ - name: ☁️ CFWarp-B
+   type: wireguard         
+   server: 188.114.98.120                                    
+   port: 4198                                              
+   ip: 172.16.0.2
+   ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
+   public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+   private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
+   udp: true
+ - name: ☁️ CFWarp-C
+   type: wireguard         
+   server: 162.159.192.47                                    
+   port: 3476                                              
+   ip: 172.16.0.2
+   ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
+   public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+   private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
+   udp: true
+ - name: ☁️ CFWarp-D
+   type: wireguard         
+   server: 162.159.192.217                                   
+   port: 3476                                              
+   ip: 172.16.0.2
+   ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
+   public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+   private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
+   udp: true
+ - name: ☁️ CFWarp-E
+   type: wireguard         
+   server: 162.159.195.0                                    
+   port: 2048                                              
+   ip: 172.16.0.2
+   ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
+   public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+   private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
+   udp: true
+ - name: ☁️ CFWarp-G
+   type: wireguard         
+   server: 162.159.195.215                                    
+   port: 4500                                              
+   ip: 172.16.0.2
+   ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
+   public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+   private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
+   udp: true 
+ - name: 🚚 节点中转
+   type: vless
+   server: www.visa.com.hk
+   port: 443
+   uuid: d9cca806-19e6-440e-aa61-542b4129da7d
+   udp: true
+   tls: true
+   network: ws
+   servername: go999.onlyno999.top # priority over wss host
+   # skip-cert-verify: true
+   ws-opts:
+     path: "/?ed=2048"
+     headers:
+       Host: go999.onlyno999.top
+   dialer-proxy: 前端配置
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - 🚚 节点中转
+      - ♻️ 自动选择
+      - ⚖️ 负载均衡
+      -    DIRECT
+      - 🔯 故障转移
+      - 🤏 自助选择
+  - name: 前端配置
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - ⚖️ 负载均衡
+      - 🤏 自助选择
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - ☁️ CFWarp-A
+      - ☁️ CFWarp-B
+      - ☁️ CFWarp-C
+      - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-G
+  - name: 🤏 自助选择
+    type: select
+    proxies:
+      - ☁️ CFWarp-A
+      - ☁️ CFWarp-B
+      - ☁️ CFWarp-C
+      - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-G
+  - name: 🔯 故障转移
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 1800
+    proxies:
+      - ☁️ CFWarp-A
+      - ☁️ CFWarp-B
+      - ☁️ CFWarp-C
+      - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-G
+  - name: ⚖️ 负载均衡
+    type: load-balance
+    proxies:
+      - ☁️ CFWarp-A
+      - ☁️ CFWarp-B
+      - ☁️ CFWarp-C
+      - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-G
+    url: http://www.gstatic.com/generate_204
+    interval: 3000
+rules:
+- DOMAIN,clash.razord.top,DIRECT
+- DOMAIN,yacd.haishan.me,DIRECT
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,🚀 节点选择
