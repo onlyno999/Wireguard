@@ -25,19 +25,18 @@ dns:
     ipcidr:
     - 240.0.0.0/4
 proxies:
-- name: meta_vless_81
-  type: vless
-  server: 45.150.165.79
-  port: 25678
-  udp: true
-  uuid: 34f36b97-1fb7-41f3-8db4-912cc69e724a
-  tls: true
-  servername: itunes.apple.com
-  flow: xtls-rprx-vision
-  network: tcp
-  reality-opts:
-    public-key: sJsSZcA2DyAHDTcoe8Utbz9JaXJPMVmtHmiXxWmcExc
-  client-fingerprint: chrome
+- name: meta_hysteria_61
+  type: hysteria
+  server: 108.181.22.239
+  port: 17727
+  sni: youku.com
+  skip-cert-verify: true
+  alpn:
+  - h3
+  protocol: udp
+  auth_str: 7YxfKsXdTnB226S8j4OjaA9M0nLcXATvgnXhVJbCRG7e9KKU7i
+  up: 11
+  down: 55
 - name: meta_hysteria_71
   type: hysteria
   server: www.dtku50.xyz
@@ -118,7 +117,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-      - meta_vless_81
+      - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
       - hysteria_1
@@ -127,7 +126,7 @@ proxy-groups:
   - name: 🤏 自助选择
     type: select
     proxies:
-      - meta_vless_81
+      - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
       - hysteria_1
@@ -138,7 +137,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 180
     proxies:
-      - meta_vless_81
+      - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
       - hysteria_1
@@ -147,7 +146,7 @@ proxy-groups:
   - name: ⚖️ 负载均衡
     type: load-balance
     proxies:
-      - meta_vless_81
+      - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
       - hysteria_1
