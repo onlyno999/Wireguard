@@ -114,7 +114,7 @@ proxy-groups:
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
-    interval: 3000
+    interval: 300
     tolerance: 50
     proxies:
       - meta_hysteria_61
@@ -135,7 +135,7 @@ proxy-groups:
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
-    interval: 1800
+    interval: 180
     proxies:
       - meta_hysteria_61
       - meta_hysteria_71
@@ -153,7 +153,11 @@ proxy-groups:
       - hysteria_2
       - hysteria_3
     url: http://www.gstatic.com/generate_204
-    interval: 3000
+    interval: 300
+        strategy: round-robin
+    commands:
+      - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
+      - proxy-groups.0.proxies.0+⚖️ 负载均衡
 rules:
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
