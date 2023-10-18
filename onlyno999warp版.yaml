@@ -114,8 +114,8 @@ proxy-groups:
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
-    interval: 100
-    tolerance: 50
+    interval: 200
+    tolerance: 100
     proxies:
       - ☁️ CFWarp-A
       - ☁️ CFWarp-B
