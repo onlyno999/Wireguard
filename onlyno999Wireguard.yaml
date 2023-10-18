@@ -69,6 +69,10 @@ proxy-groups:
       - ☁️ CFWarp-D
     url: http://www.gstatic.com/generate_204
     interval: 3000
+        strategy: round-robin
+    commands:
+      - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
+      - proxy-groups.0.proxies.0+⚖️ 负载均衡
 rules:
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
