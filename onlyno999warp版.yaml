@@ -79,7 +79,7 @@ proxies:
    public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
    private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
    udp: true
- - name: ☁️ CFWarp-G
+- name: ☁️ CFWarp-G
    type: wireguard         
    server: 162.159.195.7                             
    port: 4500                                              
