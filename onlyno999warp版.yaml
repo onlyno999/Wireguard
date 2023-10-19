@@ -70,33 +70,33 @@ proxies:
    public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
    private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
    udp: true
-- name: ☁️ CFWarp-F
+ - name: ☁️ CFWarp-F
    type: wireguard         
-   server: 162.159.193.7                                   
-   port: 2048                                
+   server: 162.159.193.7                                  
+   port: 2408                                              
    ip: 172.16.0.2
    ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
    public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
    private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
    udp: true
-- name: ☁️ CFWarp-G
+ - name: ☁️ CFWarp-G
    type: wireguard         
-   server: 162.159.195.7                             
+   server: 162.159.195.215                                    
    port: 4500                                              
    ip: 172.16.0.2
    ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
    public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
    private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
    udp: true
-- name: ☁️ CFWarp-H
+ - name: ☁️ CFWarp-H
    type: wireguard         
-   server: 162.159.193.9                               
-   port: 2048                      
+   server: 162.159.193.9                                    
+   port: 2408                                              
    ip: 172.16.0.2
    ipv6: 2606:4700:110:8ca6:e26c:fe01:2c27:f4ce
    public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
    private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
-   udp: true
+   udp: true 
  - name: 🚚 节点中转
    type: vless
    server: www.visa.com.hk
