@@ -134,16 +134,6 @@ proxy-groups:
       - hysteria_1
       - hysteria_2
       - hysteria_3
-  - name: 🛑 全球拦截
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT     
-  - name: 🆎 AdBlock
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
   - name: ⚖️ 负载均衡
     type: load-balance
     proxies:
@@ -158,75 +148,8 @@ proxy-groups:
     tolerance: 50
     strategy: round-robin
 rules:
-  - DOMAIN-KEYWORD,admarvel,🛑 全球拦截
-  - DOMAIN-KEYWORD,admaster,🛑 全球拦截
-  - DOMAIN-KEYWORD,adsage,🛑 全球拦截
-  - DOMAIN-KEYWORD,adsensor,🛑 全球拦截
-  - DOMAIN-KEYWORD,adsmogo,🛑 全球拦截
-  - DOMAIN-KEYWORD,adsrvmedia,🛑 全球拦截
-  - DOMAIN-KEYWORD,adsserving,🛑 全球拦截
-  - DOMAIN-KEYWORD,adsystem,🛑 全球拦截
-  - DOMAIN-KEYWORD,adwords,🛑 全球拦截
-  - DOMAIN-KEYWORD,applovin,🛑 全球拦截
-  - DOMAIN-KEYWORD,appsflyer,🛑 全球拦截
-  - DOMAIN-KEYWORD,domob,🛑 全球拦截
-  - DOMAIN-KEYWORD,duomeng,🛑 全球拦截
-  - DOMAIN-KEYWORD,dwtrack,🛑 全球拦截
-  - DOMAIN-KEYWORD,guanggao,🛑 全球拦截
-  - DOMAIN-KEYWORD,omgmta,🛑 全球拦截
-  - DOMAIN-KEYWORD,omniture,🛑 全球拦截
-  - DOMAIN-KEYWORD,openx,🛑 全球拦截
-  - DOMAIN-KEYWORD,partnerad,🛑 全球拦截
-  - DOMAIN-KEYWORD,pingfore,🛑 全球拦截
-  - DOMAIN-KEYWORD,socdm,🛑 全球拦截
-  - DOMAIN-KEYWORD,supersonicads,🛑 全球拦截
-  - DOMAIN-KEYWORD,wlmonitor,🛑 全球拦截
-  - DOMAIN-KEYWORD,zjtoolbar,🛑 全球拦截
-  - RULE-SET,BanAD_domain,🛑 全球拦截
-  - RULE-SET,BanEasyList_domain,🆎 AdBlock
-  - RULE-SET,BanEasyList_ipcidr,🆎 AdBlock
-  - RULE-SET,BanEasyListChina_domain,🆎 AdBlock
-  - RULE-SET,BanEasyListChina_ipcidr,🆎 AdBlock
-  - RULE-SET,BanEasyPrivacy_domain,🆎 AdBlock
-  - RULE-SET,BanEasyPrivacy_ipcidr,🆎 AdBlock
-  - MATCH,🚀 节点选择
-rule-providers:
-  BanEasyList_domain:
-    type: http
-    behavior: domain
-    url: "https://api.v1.mk/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeUxpc3QubGlzdA"
-    path: ./providers/rule-provider_BanEasyList_domain.yaml
-    interval: 86400
-  BanEasyList_ipcidr:
-    type: http
-    behavior: ipcidr
-    url: "https://api.v1.mk/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeUxpc3QubGlzdA"
-    path: ./providers/rule-provider_BanEasyList_ipcidr.yaml
-    interval: 86400
-  BanEasyListChina_domain:
-    type: http
-    behavior: domain
-    url: "https://api.v1.mk/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeUxpc3RDaGluYS5saXN0"
-    path: ./providers/rule-provider_BanEasyListChina_domain.yaml
-    interval: 86400
-  BanEasyListChina_ipcidr:
-    type: http
-    behavior: ipcidr
-    url: "https://api.v1.mk/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeUxpc3RDaGluYS5saXN0"
-    path: ./providers/rule-provider_BanEasyListChina_ipcidr.yaml
-    interval: 86400
-  BanEasyPrivacy_domain:
-    type: http
-    behavior: domain
-    url: "https://api.v1.mk/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeVByaXZhY3kubGlzdA"
-    path: ./providers/rule-provider_BanEasyPrivacy_domain.yaml
-    interval: 86400
-  BanEasyPrivacy_ipcidr:
-    type: http
-    behavior: ipcidr
-    url: "https://api.v1.mk/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeVByaXZhY3kubGlzdA"
-    path: ./providers/rule-provider_BanEasyPrivacy_ipcidr.yaml
-    interval: 86400
-    
-    
-
+- DOMAIN,clash.razord.top,DIRECT
+- DOMAIN,yacd.haishan.me,DIRECT
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,🚀 节点选择
