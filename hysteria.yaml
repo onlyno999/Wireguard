@@ -145,7 +145,6 @@ proxy-groups:
       - hysteria_3
     url: http://www.gstatic.com/generate_204
     interval: 300
-    tolerance: 50
     strategy: consistent-hashing
     commands:
     - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
