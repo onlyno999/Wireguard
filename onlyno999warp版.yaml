@@ -119,7 +119,10 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    strategy: round-robin
+    strategy: consistent-hashing
+    commands:
+    - proxy-groups.♻️ 自动选择.proxies=[]proxyNames
+    - proxy-groups.0.proxies.0+♻️ 自动选择
   - name: 🔃 自助选择
     type: select
     proxies:
