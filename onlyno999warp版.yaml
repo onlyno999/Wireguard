@@ -120,6 +120,9 @@ proxy-groups:
     interval: 300
     tolerance: 50
     strategy: round-robin
+    commands:
+      - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
+      - proxy-groups.0.proxies.0+⚖️ 负载均衡
   - name: 🔃 自助选择
     type: select
     proxies:
