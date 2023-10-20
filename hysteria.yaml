@@ -143,6 +143,7 @@ proxy-groups:
       - hysteria_3
     url: http://www.gstatic.com/generate_204
     interval: 300
+    tolerance: 50
     strategy: round-robin
 rules:
 - DOMAIN,clash.razord.top,DIRECT
