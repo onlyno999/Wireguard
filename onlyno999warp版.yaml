@@ -119,9 +119,6 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
     strategy: round-robin
-    commands:
-      - proxy-groups.♻️ 自动选择.proxies=[]proxyNames
-      - proxy-groups.0.proxies.0+♻️ 自动选择
   - name: 🔃 自助选择
     type: select
     proxies:
