@@ -134,7 +134,7 @@ proxy-groups:
       - hysteria_1
       - hysteria_2
       - hysteria_3
-   - name: 🛑 全球拦截
+  - name: 🛑 全球拦截
     type: select
     proxies:
       - REJECT
