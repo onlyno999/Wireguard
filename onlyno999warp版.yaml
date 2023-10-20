@@ -118,6 +118,7 @@ proxy-groups:
       - ☁️ CFWarp-H
     url: http://www.gstatic.com/generate_204
     interval: 300
+    tolerance: 50
     strategy: round-robin
   - name: 🔃 自助选择
     type: select
