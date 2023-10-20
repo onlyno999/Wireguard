@@ -37,18 +37,6 @@ proxies:
   auth_str: 7YxfKsXdTnB226S8j4OjaA9M0nLcXATvgnXhVJbCRG7e9KKU7i
   up: 11
   down: 55
-- name: meta_hysteria_71
-  type: hysteria
-  server: www.dtku50.xyz
-  port: 43250
-  sni: bing.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-  protocol: udp
-  auth_str: 2S9M5Gs0pgRsaTObNghoLZx6wPkBJOGTFWvf4R06Us5hUNtfr7
-  up: 2
-  down: 10
 - name: meta_hysteria_91
   type: hysteria
   server: www3.dtku49.xyz
@@ -132,7 +120,6 @@ proxy-groups:
     tolerance: 50
     proxies:
       - meta_hysteria_61
-      - meta_hysteria_71
       - meta_hysteria_91
       - hysteria_0
       - hysteria_1
@@ -142,7 +129,6 @@ proxy-groups:
     type: select
     proxies:
       - meta_hysteria_61
-      - meta_hysteria_71
       - meta_hysteria_91
       - hysteria_0
       - hysteria_1
@@ -152,7 +138,6 @@ proxy-groups:
     type: load-balance
     proxies:
       - meta_hysteria_61
-      - meta_hysteria_71
       - meta_hysteria_91
       - hysteria_0
       - hysteria_1
