@@ -134,7 +134,7 @@ proxy-groups:
       - hysteria_1
       - hysteria_2
       - hysteria_3
-      - name: 🆎 AdBlock
+  - name: 🆎 AdBlock
     type: select
     proxies:
       - REJECT
