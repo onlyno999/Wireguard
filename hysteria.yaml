@@ -134,6 +134,11 @@ proxy-groups:
       - hysteria_1
       - hysteria_2
       - hysteria_3
+      - name: 🆎 AdBlock
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
   - name: ⚖️ 负载均衡
     type: load-balance
     proxies:
@@ -148,8 +153,54 @@ proxy-groups:
     tolerance: 50
     strategy: round-robin
 rules:
+- RULE-SET,BanEasyList_domain,🆎 AdBlock
+- RULE-SET,BanEasyList_ipcidr,🆎 AdBlock
+- RULE-SET,BanEasyListChina_domain,🆎 AdBlock
+- RULE-SET,BanEasyListChina_ipcidr,🆎 AdBlock
+- RULE-SET,BanEasyPrivacy_domain,🆎 AdBlock
+- RULE-SET,BanEasyPrivacy_ipcidr,🆎 AdBlock
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
 - GEOIP,LAN,DIRECT
 - GEOIP,CN,DIRECT
 - MATCH,🚀 节点选择
+rule-providers:
+provider_BanProgramAD_ipcidr.yaml
+    interval: 86400
+  BanEasyList_domain:
+    type: http
+    behavior: domain
+    url: "https://api.v1.mk/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeUxpc3QubGlzdA"
+    path: ./providers/rule-provider_BanEasyList_domain.yaml
+    interval: 86400
+  BanEasyList_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://api.v1.mk/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeUxpc3QubGlzdA"
+    path: ./providers/rule-provider_BanEasyList_ipcidr.yaml
+    interval: 86400
+  BanEasyListChina_domain:
+    type: http
+    behavior: domain
+    url: "https://api.v1.mk/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeUxpc3RDaGluYS5saXN0"
+    path: ./providers/rule-provider_BanEasyListChina_domain.yaml
+    interval: 86400
+  BanEasyListChina_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://api.v1.mk/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeUxpc3RDaGluYS5saXN0"
+    path: ./providers/rule-provider_BanEasyListChina_ipcidr.yaml
+    interval: 86400
+  BanEasyPrivacy_domain:
+    type: http
+    behavior: domain
+    url: "https://api.v1.mk/getruleset?type=3&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeVByaXZhY3kubGlzdA"
+    path: ./providers/rule-provider_BanEasyPrivacy_domain.yaml
+    interval: 86400
+  BanEasyPrivacy_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://api.v1.mk/getruleset?type=4&url=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQUNMNFNTUi9tYXN0ZXIvQ2xhc2gvQmFuRWFzeVByaXZhY3kubGlzdA"
+    path: ./providers/rule-provider_BanEasyPrivacy_ipcidr.yaml
+    interval: 86400
+
