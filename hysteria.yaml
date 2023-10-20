@@ -61,6 +61,20 @@ proxies:
   auth_str: nbdyVMqucpFMmyRiwcRQFI7EeKzJWjPYuks3ZzEhCv6HjeZvbh
   up: 11
   down: 55
+- name: hysteria_0
+  type: hysteria
+  server: 167.160.91.115
+  port: 13928
+  ports: 13928
+  auth_str: BF0LL4L2jlqSdW3KxjQv81AiFFjj90vWRHeUoqUuTVPeDAGvq3
+  up: 80
+  down: 100
+  fast-open: true
+  protocol: udp
+  sni: paypal.com
+  skip-cert-verify: true
+  alpn:
+  - h3
 - name: hysteria_1
   type: hysteria
   server: 173.234.25.52
@@ -120,6 +134,7 @@ proxy-groups:
       - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
+      - hysteria_0
       - hysteria_1
       - hysteria_2
       - hysteria_3
@@ -129,6 +144,7 @@ proxy-groups:
       - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
+      - hysteria_0
       - hysteria_1
       - hysteria_2
       - hysteria_3
@@ -138,6 +154,7 @@ proxy-groups:
       - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
+      - hysteria_0
       - hysteria_1
       - hysteria_2
       - hysteria_3
