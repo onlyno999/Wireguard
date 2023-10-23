@@ -98,65 +98,66 @@ proxies:
    private-key: +J6PcJRTXLLxbPwxZPxCxL9URoX0svVoZRd8vDrJals=
    udp: true 
 proxy-groups:
-  - name: 🚀 节点选择
-    type: select
-    proxies:
-      - ♻️ 自动选择
-      - 🔯 故障转移
-      - ⚖️ 负载均衡
-      - DIRECT
-      - ☁️ CFWarp-A
-      - ☁️ CFWarp-B
-      - ☁️ CFWarp-C
-      - ☁️ CFWarp-D
-      - ☁️ CFWarp-E
-      - ☁️ CFWarp-F
-      - ☁️ CFWarp-G
-      - ☁️ CFWarp-H
-  - name: ♻️ 自动选择
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 1000
-    tolerance: 200
-    proxies:
-      - ☁️ CFWarp-A
-      - ☁️ CFWarp-B
-      - ☁️ CFWarp-C
-      - ☁️ CFWarp-D
-      - ☁️ CFWarp-E
-      - ☁️ CFWarp-F
-      - ☁️ CFWarp-G
-      - ☁️ CFWarp-H
-  - name: 🔯 故障转移
-    type: fallback
-    url: http://www.gstatic.com/generate_204
-    interval: 180
-    proxies:
-      - ☁️ CFWarp-A
-      - ☁️ CFWarp-B
-      - ☁️ CFWarp-C
-      - ☁️ CFWarp-D
-      - ☁️ CFWarp-E
-      - ☁️ CFWarp-F
-      - ☁️ CFWarp-G
-      - ☁️ CFWarp-H
-  - name: ⚖️ 负载均衡
-    type: load-balance
-    proxies:
-      - ☁️ CFWarp-A
-      - ☁️ CFWarp-B
-      - ☁️ CFWarp-C
-      - ☁️ CFWarp-D
-      - ☁️ CFWarp-E
-      - ☁️ CFWarp-F
-      - ☁️ CFWarp-G
-      - ☁️ CFWarp-H
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-        strategy: consistent-hashing
-    commands:
-      - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
-      - proxy-groups.0.proxies.0+⚖️ 负载均衡
+ - name: 🚀 节点选择
+   type: select
+   proxies:
+     - ♻️ 自动选择
+     - 🔯 故障转移
+     - ⚖️ 负载均衡
+     - DIRECT
+     - ☁️ CFWarp-A
+     - ☁️ CFWarp-B
+     - ☁️ CFWarp-C
+     - ☁️ CFWarp-D
+     - ☁️ CFWarp-E
+     - ☁️ CFWarp-F
+     - ☁️ CFWarp-G
+     - ☁️ CFWarp-H
+ - name: ♻️ 自动选择
+   type: url-test
+   url: http://www.gstatic.com/generate_204
+   interval: 1000
+   tolerance: 50
+   proxies:
+     - ☁️ CFWarp-A
+     - ☁️ CFWarp-B
+     - ☁️ CFWarp-C
+     - ☁️ CFWarp-D
+     - ☁️ CFWarp-E
+     - ☁️ CFWarp-F
+     - ☁️ CFWarp-G
+     - ☁️ CFWarp-H
+ - name: 🔯 故障转移
+   type: fallback
+   url: http://www.gstatic.com/generate_204
+   interval: 180
+   proxies:
+     - ☁️ CFWarp-A
+     - ☁️ CFWarp-B
+     - ☁️ CFWarp-C
+     - ☁️ CFWarp-D
+     - ☁️ CFWarp-E
+     - ☁️ CFWarp-F
+     - ☁️ CFWarp-G
+     - ☁️ CFWarp-H
+ - name: ⚖️ 负载均衡
+   type: load-balance
+   proxies:
+     - ☁️ CFWarp-A
+     - ☁️ CFWarp-B
+     - ☁️ CFWarp-C
+     - ☁️ CFWarp-D
+     - ☁️ CFWarp-E
+     - ☁️ CFWarp-F
+     - ☁️ CFWarp-G
+     - ☁️ CFWarp-H
+   url: http://www.gstatic.com/generate_204
+   interval: 3000
+   tolerance: 30
+   strategy: consistent-hashing
+   commands:
+    - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
+    - proxy-groups.0.proxies.0+⚖️ 负载均衡
 rules:
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
