@@ -157,3 +157,9 @@ proxy-groups:
     commands:
       - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
       - proxy-groups.0.proxies.0+⚖️ 负载均衡
+rules:
+- DOMAIN,clash.razord.top,DIRECT
+- DOMAIN,yacd.haishan.me,DIRECT
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,🚀 节点选择
