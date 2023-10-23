@@ -102,12 +102,9 @@ proxy-groups:
     type: select
     proxies:
       - ♻️ 自动选择
-      - DIRECT
-      - 🔃 自助选择
       - 🔯 故障转移
-  - name: ♻️ 自动选择
-    type: load-balance
-    proxies:
+      - ⚖️ 负载均衡
+      - DIRECT
       - ☁️ CFWarp-A
       - ☁️ CFWarp-B
       - ☁️ CFWarp-C
@@ -116,14 +113,11 @@ proxy-groups:
       - ☁️ CFWarp-F
       - ☁️ CFWarp-G
       - ☁️ CFWarp-H
+  - name: ♻️ 自动选择
+    type: url-test
     url: http://www.gstatic.com/generate_204
-    interval: 300
-    strategy: round-robin
-    commands:
-    - proxy-groups.♻️ 自动选择.proxies=[]proxyNames
-    - proxy-groups.0.proxies.0+♻️ 自动选择
-  - name: 🔃 自助选择
-    type: select
+    interval: 1000
+    tolerance: 200
     proxies:
       - ☁️ CFWarp-A
       - ☁️ CFWarp-B
@@ -146,9 +140,20 @@ proxy-groups:
       - ☁️ CFWarp-F
       - ☁️ CFWarp-G
       - ☁️ CFWarp-H
-rules:
-- DOMAIN,clash.razord.top,DIRECT
-- DOMAIN,yacd.haishan.me,DIRECT
-- GEOIP,LAN,DIRECT
-- GEOIP,CN,DIRECT
-- MATCH,🚀 节点选择
+  - name: ⚖️ 负载均衡
+    type: load-balance
+    proxies:
+      - ☁️ CFWarp-A
+      - ☁️ CFWarp-B
+      - ☁️ CFWarp-C
+      - ☁️ CFWarp-D
+      - ☁️ CFWarp-E
+      - ☁️ CFWarp-F
+      - ☁️ CFWarp-G
+      - ☁️ CFWarp-H
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+        strategy: consistent-hashing
+    commands:
+      - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
+      - proxy-groups.0.proxies.0+⚖️ 负载均衡
