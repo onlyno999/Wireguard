@@ -25,6 +25,19 @@ dns:
     ipcidr:
     - 240.0.0.0/4
 proxies:
+- name: meta_tuic_00
+  server: tuic4.dtku47.xyz
+  port: 12980
+  type: tuic
+  uuid: ea8be14e-f82a-43ae-90b2-e110a7c7e164
+  password: dongtaiwang.com
+  sni: tuic4.dtku47.xyz
+  alpn:
+  - h3
+  request-timeout: 8000
+  udp-relay-mode: native
+  skip-cert-verify: false
+  congestion-controller: bbr
 - name: meta_hysteria_61
   type: hysteria
   server: 108.181.22.239
@@ -131,6 +144,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
+      - meta_tuic_00
       - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
@@ -141,6 +155,7 @@ proxy-groups:
   - name: 🆔 自助选择
     type: select
     proxies:
+      - meta_tuic_00
       - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
@@ -151,6 +166,7 @@ proxy-groups:
   - name: ⚖️ 负载均衡
     type: load-balance
     proxies:
+      - meta_tuic_00
       - meta_hysteria_61
       - meta_hysteria_71
       - meta_hysteria_91
