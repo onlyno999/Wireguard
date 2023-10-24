@@ -24,166 +24,75 @@ dns:
     geoip-code: CN
     ipcidr:
     - 240.0.0.0/4
-proxies:
-- name: meta_tuic_00
-  server: tuic4.dtku47.xyz
-  port: 12980
-  type: tuic
-  uuid: ea8be14e-f82a-43ae-90b2-e110a7c7e164
-  password: dongtaiwang.com
-  sni: tuic4.dtku47.xyz
-  alpn:
-  - h3
-  request-timeout: 8000
-  udp-relay-mode: native
-  skip-cert-verify: false
-  congestion-controller: bbr
-- name: meta_hysteria_61
-  type: hysteria
-  server: 108.181.22.239
-  port: 17727
-  sni: youku.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-  protocol: udp
-  auth_str: 7YxfKsXdTnB226S8j4OjaA9M0nLcXATvgnXhVJbCRG7e9KKU7i
-  up: 11
-  down: 55
-- name: meta_hysteria_71
-  type: hysteria
-  server: www.dtku50.xyz
-  port: 43250
-  sni: bing.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-  protocol: udp
-  auth_str: 2S9M5Gs0pgRsaTObNghoLZx6wPkBJOGTFWvf4R06Us5hUNtfr7
-  up: 2
-  down: 10
-- name: meta_hysteria_91
-  type: hysteria
-  server: www3.dtku49.xyz
-  port: 58693
-  sni: bing.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-  protocol: udp
-  auth_str: nbdyVMqucpFMmyRiwcRQFI7EeKzJWjPYuks3ZzEhCv6HjeZvbh
-  up: 11
-  down: 55
-- name: hysteria_0
-  type: hysteria
-  server: 167.160.91.115
-  port: 41698
-  ports: 41698
-  auth_str: kZYvm1YxXAQ9ydOJEYOzqiEK34J54WnxhhQUfLlV0yEglpa8uI
-  up: 80
-  down: 100
-  fast-open: true
-  protocol: udp
-  sni: www.microsoft.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-- name: hysteria_1
-  type: hysteria
-  server: 173.234.25.52
-  port: 20164
-  ports: 20164
-  auth_str: Ljg6NNEATDqP97hdAdHe1lJv7ggtKc0h7zmCCZKCX3qY0LR64F
-  up: 80
-  down: 100
-  fast-open: true
-  protocol: udp
-  sni: www.microsoft.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-- name: hysteria_2
-  type: hysteria
-  server: 173.234.25.52
-  port: 20164
-  ports: 20164
-  auth_str: Ljg6NNEATDqP97hdAdHe1lJv7ggtKc0h7zmCCZKCX3qY0LR64F
-  up: 80
-  down: 100
-  fast-open: true
-  protocol: udp
-  sni: www.microsoft.com
-  skip-cert-verify: true
-  alpn:
-  - h3
-- name: hysteria_3
-  type: hysteria
-  server: 51.158.54.46
-  port: 11926
-  ports: 11926
-  auth_str: Trz2alKwzCImRAXI3nXfpo1ylpHfqOL8s1vageWKoyjjvWeMVs
-  up: 80
-  down: 100
-  fast-open: true
-  protocol: udp
-  sni: youku.com
-  skip-cert-verify: true
-  alpn:
-  - h3
+
+proxy-providers:
+  FlyingBird-hysteria:
+    type: http
+    path: ./ProxySet/FlyingBird/hysteria.yaml
+    url: "https://mareep.netlify.app/sub/merged_warp_proxies_new.yaml"
+    interval: 1800
+    filter: 'hysteria'
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
 proxy-groups:
   - name: 🚀 节点选择
     type: select
     proxies:
       - ♻️ 自动选择
-      - ⚖️ 负载均衡
-      -  DIRECT
-      - 🆔 自助选择
+      -    DIRECT
+      - 🔯 故障转移
+      - 🔃 自助选择
+      - ⚖️ 负载均衡-散列
+      - ⚖️ 负载均衡-轮询
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
-      - meta_tuic_00
-      - meta_hysteria_61
-      - meta_hysteria_71
-      - meta_hysteria_91
-      - hysteria_0
-      - hysteria_1
-      - hysteria_2
-      - hysteria_3
-  - name: 🆔 自助选择
+    use:
+      - FlyingBird-hysteria
+  - name: 🔃 自助选择
     type: select
     proxies:
-      - meta_tuic_00
-      - meta_hysteria_61
-      - meta_hysteria_71
-      - meta_hysteria_91
-      - hysteria_0
-      - hysteria_1
-      - hysteria_2
-      - hysteria_3
-  - name: ⚖️ 负载均衡
+    use:
+      - FlyingBird-hysteria
+  - name: 🔯 故障转移
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 180
+    proxies:
+    use:
+      - FlyingBird-hysteria
+  - name: ⚖️ 负载均衡-散列
     type: load-balance
     proxies:
-      - meta_tuic_00
-      - meta_hysteria_61
-      - meta_hysteria_71
-      - meta_hysteria_91
-      - hysteria_0
-      - hysteria_1
-      - hysteria_2
-      - hysteria_3
+    use:
+      - FlyingBird-hysteria
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 30
     strategy: consistent-hashing
+  - name: ⚖️ 负载均衡-轮询
+    type: load-balance
+    proxies:
+    use:
+      - FlyingBird-hysteria
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 30
+    strategy: round-robin
     commands:
-    - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
-    - proxy-groups.0.proxies.0+⚖️ 负载均衡
+      - proxy-groups.⚖️ 负载均衡-散列.proxies=[]proxyNames
+      - proxy-groups.0.proxies.0+⚖️ 负载均衡-散列
+      - proxy-groups.⚖️ 负载均衡-轮询.proxies=[]proxyNames
+      - proxy-groups.0.proxies.0+⚖️ 负载均衡-轮询
 rules:
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
 - GEOIP,LAN,DIRECT
 - GEOIP,CN,DIRECT
-- MATCH,🚀 节点选择
+- MATCH,  🚀 节点选择
