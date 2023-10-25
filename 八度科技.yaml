@@ -29,7 +29,7 @@ proxy-providers:
   FlyingBird-XX8X:
     type: http
     path: ./ProxySet/FlyingBird/XX8X.yaml
-    url: "https://get.3b3.net/https://api.v1.mk/sub?target=clash&url=https://raw.fastgit.org/freefq/free/master/v2&insert=false&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=true&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
+    url: "https://paste.gg/p/ruanianku/1080288024334b468d653ba5f9d7a59d/files/867170480c5944b9946dc2e86e7de039/raw"
     interval: 1800
     filter: 
     health-check:
