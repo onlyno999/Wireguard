@@ -26,10 +26,10 @@ dns:
     - 240.0.0.0/4
 
 proxy-providers:
-  FlyingBird-XXXX:
+  FlyingBird-XXX8X:
     type: http
-    path: ./ProxySet/FlyingBird/XXXX.yaml
-    url: "https://sub.maoxiongnet.com/sub?target=clash&new_name=true&url=https%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fv2&insert=false&emoji=true&list=true&tfo=false&scv=false&fdn=false&sort=false"
+    path: ./ProxySet/FlyingBird/XX8X.yaml
+    url: "https://get.66a.zone/https://sub.maoxiongnet.com/sub?target=clash&new_name=true&url=https%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fv2&insert=false&emoji=true&list=true&tfo=false&scv=false&fdn=false&sort=false"
     interval: 1800
     filter: 
     health-check:
@@ -54,24 +54,24 @@ proxy-groups:
     tolerance: 50
     proxies:
     use:
-      - FlyingBird-XXXX
+      - FlyingBird-XX8X
   - name: 🔃 自助选择
     type: select
     proxies:
     use:
-      - FlyingBird-XXXX
+      - FlyingBird-XX8X
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
     interval: 180
     proxies:
     use:
-      - FlyingBird-XXXX
+      - FlyingBird-XX8X
   - name: ⚖️ 负载均衡-散列
     type: load-balance
     proxies:
     use:
-      - FlyingBird-XXXX
+      - FlyingBird-XX8X
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 30
@@ -80,7 +80,7 @@ proxy-groups:
     type: load-balance
     proxies:
     use:
-      - FlyingBird-XXXX
+      - FlyingBird-XX8X
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 30
