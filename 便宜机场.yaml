@@ -29,7 +29,7 @@ proxy-providers:
   FlyingBird-XXXX:
     type: http
     path: ./ProxySet/FlyingBird/XXXX.yaml
-    url: "https://sub1.timeneverchanges.com/api/v1/client/subscribe?token=d3948608d6ba96eef1aacac2b7f315e4"
+    url: "https://sub.maoxiongnet.com/sub?target=clash&new_name=true&url=https%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fv2&insert=false&emoji=true&list=true&tfo=false&scv=false&fdn=false&sort=false"
     interval: 1800
     filter: 
     health-check:
