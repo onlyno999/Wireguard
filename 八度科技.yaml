@@ -26,7 +26,7 @@ dns:
     - 240.0.0.0/4
 
 proxy-providers:
-  FlyingBird-XXX8X:
+  FlyingBird-XX8X:
     type: http
     path: ./ProxySet/FlyingBird/XX8X.yaml
     url: "https://get.66a.zone/https://sub.maoxiongnet.com/sub?target=clash&new_name=true&url=https%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fv2&insert=false&emoji=true&list=true&tfo=false&scv=false&fdn=false&sort=false"
