@@ -31,8 +31,8 @@ proxy-providers:
     path: ./ProxySet/FlyingBird/hysteria.yaml
     url: "https://mareep.netlify.app/sub/merged_warp_proxies_new.yaml"
     interval: 3600
-    filter: 
-    Exclude: 'trojan'
+    filter: 'hysteria'
+    filter: 'Tuic'
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
