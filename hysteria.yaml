@@ -33,7 +33,7 @@ proxy-providers:
     interval: 3600
     filter:
     exclude-type: "trojan|wireguard|vless"
-    exclude-filter:
+    exclude-filter:"绵阳"
 
 proxy-groups:
   - name: 🚀 节点选择
