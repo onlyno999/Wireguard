@@ -33,7 +33,7 @@ proxy-providers:
     interval: 3600
     filter:
     exclude-type: "wireguard|vless"
-    exclude-filter:
+    exclude-filter: "油管"
 
 proxy-groups:
   - name: 🚀 节点选择
