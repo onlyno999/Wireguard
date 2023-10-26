@@ -32,11 +32,9 @@ proxy-providers:
     url: "https://subconverter.do.xn--b6gac.eu.org/sub?target=clash&url=https%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fv2&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Mini_MultiMode.ini&sort=true&emoji=true&list=false&xudp=true&udp=true&tfo=false&expand=true&scv=false&fdn=false&clash.doh=true&new_name=true"
     interval: 3600
     filter: 
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 300
-
+    exclude-type:
+    exclude-filter:
+    
 proxy-groups:
   - name: 🚀 节点选择
     type: select
