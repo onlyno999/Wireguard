@@ -24,7 +24,6 @@ dns:
     geoip-code: CN
     ipcidr:
     - 240.0.0.0/4
-
 proxy-providers:
   FlyingBird-hysteria:
     type: http
@@ -34,7 +33,6 @@ proxy-providers:
     filter:
     exclude-type: "wireguard|vless"
     exclude-filter: "油管"
-
 proxy-groups:
   - name: 🚀 节点选择
     type: select
