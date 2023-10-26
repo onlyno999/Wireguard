@@ -32,8 +32,8 @@ proxy-providers:
     url: "https://mareep.netlify.app/sub/merged_warp_proxies_new.yaml"
     interval: 3600
     filter:
-    exclude-type: "trojan|wireguard|vless"
-    exclude-filter:"绵阳"
+    exclude-type: "wireguard|vless"
+    exclude-filter:
 
 proxy-groups:
   - name: 🚀 节点选择
