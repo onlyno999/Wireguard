@@ -64,7 +64,7 @@ proxy-groups:
     type: fallback
     url: http://www.gstatic.com/generate_204
     interval: 1800
-    tolerance: 150
+    tolerance: 100
     proxies:
     use:
       - FlyingBird-hysteria
