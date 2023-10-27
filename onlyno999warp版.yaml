@@ -154,7 +154,7 @@ proxy-groups:
    url: http://www.gstatic.com/generate_204
    interval: 3000
    tolerance: 30
-   strategy: consistent-hashing
+   strategy: round-robin
    commands:
     - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
     - proxy-groups.0.proxies.0+⚖️ 负载均衡
