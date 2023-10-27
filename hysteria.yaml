@@ -81,7 +81,7 @@ proxy-groups:
     use:
       - FlyingBird-hysteria
     url: none
-    interval: -1
+    interval: 300
     strategy: round-robin
     commands:
       - proxy-groups.⚖️ 负载均衡-散列.proxies=[]proxyNames
