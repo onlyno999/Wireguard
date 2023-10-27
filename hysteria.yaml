@@ -80,7 +80,7 @@ proxy-groups:
     proxies:
     use:
       - FlyingBird-hysteria
-    url: none
+    url: test
     interval: 300
     strategy: round-robin
     commands:
