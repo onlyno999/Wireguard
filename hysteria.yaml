@@ -25,9 +25,9 @@ dns:
     ipcidr:
     - 240.0.0.0/4
 proxy-providers:
-  FlyingBird-hysteria:
+ onlyno999-0002:
     type: http
-    path: ./ProxySet/FlyingBird/hysteria.yaml
+    path: ./sdcard/download/0002.yaml
     url: "https://mareep.netlify.app/sub/merged_warp_proxies_new.yaml"
     interval: 3600
     filter:
@@ -50,12 +50,12 @@ proxy-groups:
     tolerance: 300
     proxies:
     use:
-      - FlyingBird-hysteria
+      - onlyno999-0002
   - name: 🔃 自助选择
     type: select
     proxies:
     use:
-      - FlyingBird-hysteria
+      - onlyno999-0002
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
@@ -63,12 +63,12 @@ proxy-groups:
     tolerance: 100
     proxies:
     use:
-      - FlyingBird-hysteria
+      - onlyno999-0002
   - name: ⚖️ 负载均衡-散列
     type: load-balance
     proxies:
     use:
-      - FlyingBird-hysteria
+      - onlyno999-0002
     url: http://www.gstatic.com/generate_204
     interval: 3000
     tolerance: 200
@@ -77,7 +77,7 @@ proxy-groups:
     type: load-balance
     proxies:
     use:
-      - FlyingBird-hysteria
+      - onlyno999-0002
     url: http://www.gstatic.com/generate_204
     interval: 3000
     tolerance: 200
