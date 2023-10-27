@@ -153,7 +153,7 @@ proxy-groups:
      - ☁️ CFWarp-H
    url: http://www.gstatic.com/generate_204
    interval: 3000
-   tolerance: 30
+   tolerance: 150
    strategy: round-robin
    commands:
     - proxy-groups.⚖️ 负载均衡.proxies=[]proxyNames
