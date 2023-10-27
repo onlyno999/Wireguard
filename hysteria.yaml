@@ -50,8 +50,8 @@ proxy-groups:
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
+    interval: 2800
+    tolerance: 300
     proxies:
     use:
       - FlyingBird-hysteria
@@ -63,7 +63,7 @@ proxy-groups:
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
-    interval: 180
+    interval: 1800
     proxies:
     use:
       - FlyingBird-hysteria
@@ -72,8 +72,8 @@ proxy-groups:
     proxies:
     use:
       - FlyingBird-hysteria
-    url: none
-    interval: -1
+    url: http://www.gstatic.com/generate_204
+    interval: 3000
     strategy: consistent-hashing
   - name: ⚖️ 负载均衡-轮询
     type: load-balance
