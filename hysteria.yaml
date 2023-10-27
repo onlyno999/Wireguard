@@ -80,8 +80,8 @@ proxy-groups:
     proxies:
     use:
       - FlyingBird-hysteria
-    url: http://www.gstatic.com/generate_204
-    interval: 300
+    url: none
+    interval: -1
     strategy: round-robin
     commands:
       - proxy-groups.⚖️ 负载均衡-散列.proxies=[]proxyNames
