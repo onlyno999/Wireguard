@@ -34,7 +34,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 300
+      interval: 2000
     exclude-type: "wireguard|vless"
     exclude-filter: "油管"
 proxy-groups:
