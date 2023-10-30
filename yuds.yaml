@@ -25,14 +25,14 @@ dns:
     ipcidr:
     - 240.0.0.0/4
 proxy-providers:
- onlyno999-000x:
+ onlyno999-0005:
     type: http
-    path: ./sdcard/download/000x.yaml
+    path: ./sdcard/download/0005.yaml
     url: "https://sub.xeton.dev/sub?target=clash&url=https%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fv2&emoji=true&list=false&sort=false&udp=false&tfo=false&scv=false&append_type=false&fdn=true&new_name=true"
     interval: 3600
     filter:
     exclude-type: "Trojan"
-    exclude-filter: 
+    exclude-filter: "🇨🇳" 
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -50,7 +50,7 @@ proxy-groups:
     tolerance: 300
     proxies:
     use:
-      - onlyno999-000x
+      - onlyno999-0005
   - name: 🔃 自助选择
     type: select
     proxies:
@@ -63,12 +63,12 @@ proxy-groups:
     tolerance: 100
     proxies:
     use:
-      - onlyno999-000x
+      - onlyno999-0005
   - name: ⚖️ 负载均衡-散列
     type: load-balance
     proxies:
     use:
-      - onlyno999-000x
+      - onlyno999-0005
     url: http://www.gstatic.com/generate_204
     interval: 3000
     tolerance: 200
@@ -77,7 +77,7 @@ proxy-groups:
     type: load-balance
     proxies:
     use:
-      - onlyno999-000x
+      - onlyno999-0005
     url: http://www.gstatic.com/generate_204
     interval: 3000
     tolerance: 200
