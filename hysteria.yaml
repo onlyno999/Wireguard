@@ -31,7 +31,7 @@ proxy-providers:
     url: "https://mareep.netlify.app/sub/merged_warp_proxies_new.yaml"
     interval: 3600
     filter:
-    exclude-type: "wireguard|vless"
+    exclude-type: "wireguard|trojan"
     exclude-filter: "油管"
     health-check:
       enable: true
