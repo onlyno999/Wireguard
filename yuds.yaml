@@ -55,7 +55,7 @@ proxy-groups:
     type: select
     proxies:
     use:
-      - onlyno999-000x
+      - onlyno999-0005
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
