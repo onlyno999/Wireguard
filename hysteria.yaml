@@ -32,7 +32,7 @@ proxy-providers:
     interval: 3600
     filter:
     exclude-type: "wireguard|trojan"
-    exclude-filter: "油管"
+    exclude-filter: "油管|reality"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
