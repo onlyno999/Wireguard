@@ -28,7 +28,7 @@ proxy-providers:
  onlyno999-0009:
     type: http
     path: ./sdcard/download/0009.yaml
-    url: "https://sub.xeton.dev/sub?target=clash&url=https%3A%2F%2Fdd.al%2Fkkovokkk&config=https%3A%2F%2Fgist.githubusercontent.com%2Ftindy2013%2F1fa08640a9088ac8652dbd40c5d2715b%2Fraw%2Fdefault_with_clash_adg.yml&emoji=true&list=false&sort=false&udp=false&tfo=false&scv=false&append_type=false&fdn=true&new_name=true"
+    url: "https://sub.lly.cz/api/v1/client/subscribe?token=caf9c1764c30ea0e1e4bf2acc1f805b4&flag=clashmeta"
     interval: 3600
     filter:
     exclude-type: 
