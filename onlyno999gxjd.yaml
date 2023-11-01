@@ -28,7 +28,7 @@ proxy-providers:
  onlyno999-1201:
     type: http
     path: ./sdcard/download/1201.yaml
-    url: "https://api.v1.mk/sub?target=clash&url=https%3A%2F%2Fd1.mk%2F3RmRwkv&remove_emoji=false"
+    url: "https://ghproxy.com/https://raw.githubusercontent.com/zhangkaiitugithub/passcro/main/speednodes.yaml"
     interval: 3600
     filter:
     exclude-type: 
