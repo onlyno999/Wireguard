@@ -1,0 +1,99 @@
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+dns:
+  enable: true
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 223.5.5.5
+  - 8.8.8.8
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  fallback:
+  - https://1.0.0.1/dns-query
+  - tls://dns.google
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+    - 240.0.0.0/4
+proxy-providers:
+ onlyno999-1201:
+    type: http
+    path: ./sdcard/download/1201.yaml
+    url: "https://api.v1.mk/sub?target=clash&url=https%3A%2F%2Fd1.mk%2F3RmRwkv&remove_emoji=false"
+    interval: 3600
+    filter:
+    exclude-type: 
+    exclude-filter:
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      -    DIRECT
+      - 🔯 故障转移
+      - 🔃 自助选择
+      - ⚖️ 负载均衡-散列
+      - ⚖️ 负载均衡-轮询
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 2000
+    tolerance: 100
+    proxies:
+    use:
+      - onlyno999-1201
+  - name: 🔃 自助选择
+    type: select
+    proxies:
+    use:
+      - onlyno999-1201
+  - name: 🔯 故障转移
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 1800
+    tolerance: 150
+    proxies:
+    use:
+      - onlyno999-1201
+  - name: ⚖️ 负载均衡-散列
+    type: load-balance
+    proxies:
+    use:
+      - onlyno999-1201
+    url: http://www.gstatic.com/generate_204
+    interval: 3000
+    tolerance: 200
+    strategy: consistent-hashing
+  - name: ⚖️ 负载均衡-轮询
+    type: load-balance
+    proxies:
+    use:
+      - onlyno999-1201
+    url: http://www.gstatic.com/generate_204
+    interval: 3000
+    tolerance: 200
+    strategy: round-robin
+    commands:
+      - proxy-groups.⚖️ 负载均衡-散列.proxies=[]proxyNames
+      - proxy-groups.0.proxies.0+⚖️ 负载均衡-散列
+      - proxy-groups.⚖️ 负载均衡-轮询.proxies=[]proxyNames
+      - proxy-groups.0.proxies.0+⚖️ 负载均衡-轮询
+rules:
+- DOMAIN,clash.razord.top,DIRECT
+- DOMAIN,yacd.haishan.me,DIRECT
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,  🚀 节点选择
