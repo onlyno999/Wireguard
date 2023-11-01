@@ -29,8 +29,8 @@ proxy-providers:
     type: http
     path: ./sdcard/download/1201.yaml
     url: "https://api.v1.mk/sub?target=clash&url=https%3A%2F%2Fd1.mk%2F3RmRwkv&remove_emoji=false"
-    interval: 3600
-    filter:
+    interval: 1800
+    filter
     exclude-type: 
     exclude-filter:
     health-check:
